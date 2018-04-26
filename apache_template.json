@@ -33,7 +33,9 @@
                     }
                  },
                  "match_mapping_type": "string",
-                 "match": "*"
+                    "mapping": {
+                    "type": "text"
+                    }
               }
            }
         ],
@@ -46,10 +48,6 @@
                  }
               },
               "type": "object"
-           },
-           @version: {
-              "analyzer": "not analyzed",
-              "type": "string"
            }
         },
         "_all": {
