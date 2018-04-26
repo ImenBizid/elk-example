@@ -49,8 +49,7 @@
            },
            "string": {
               "analyzer": "ik_max_word",
-              "type": "text",
-              "include_in_all": "true"
+              "type": "text"
            }
         },
         "_all": {
