@@ -26,8 +26,7 @@
                 "omit_norms" : true,
                 "type" : "text"
               },
-              "match_mapping_type" : "string",
-              "match" : "message"
+              "match_mapping_type" : "text",
             }
           },
           {
@@ -35,7 +34,7 @@
               "mapping" : {
                 "type" : "text"
               },
-              "match_mapping_type" : "string"
+              "match_mapping_type" : "text"
             }
           }
         ],
