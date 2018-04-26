@@ -48,8 +48,8 @@
               "type": "object"
            },
            "@version": {
-              "index": "not_analyzed",
-              "type": "string"
+              "analyzer" => "ik_max_word",
+              "type": "text"
            }
         },
         "_all": {
