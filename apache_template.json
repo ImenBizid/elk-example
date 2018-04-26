@@ -48,9 +48,10 @@
               "type": "object",
               "dynamic": true,
               "properties": {
-                "location": {
-                  "type": "geo_point"
-                }
+                  "ip": { "type": "ip" },
+                  "location" : { "type" : "geo_point" },
+                  "latitude" : { "type" : "half_float" },
+                  "longitude" : { "type" : "half_float" }
               }
             }
           }
