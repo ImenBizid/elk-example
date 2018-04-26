@@ -13,9 +13,7 @@
                     "index": "analyzed",
                     "omit_norms": true,
                     "type": "string"
-                 },
-                 "match_mapping_type": "string",
-                 "match": "message"
+                 }
               }
            },
            {
