@@ -16,7 +16,6 @@
                 "match_mapping_type": "string",
                 "mapping": {
                   "type": "text",
-                  "index": "analyzed",
                   "omit_norms": true
                 }
               }
@@ -27,7 +26,6 @@
                 "match_mapping_type": "string",
                 "mapping": {
                   "type": "text",
-                  "index": "analyzed",
                   "omit_norms": true,
                   "fields": {
                     "keyword": {
