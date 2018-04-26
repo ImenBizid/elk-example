@@ -1,14 +1,11 @@
 "apache_elk_example" : {
-    "order" : 0,
-    "index_patterns" : [
-      "apache_elk_example"
-    ],
-    "settings" : {
-      "index" : {
-        "refresh_interval" : "5s"
-      }
-    },
-"mappings": {
+      "settings": {
+        "index.refresh_interval": "5s",
+        "index.number_of_shards": 2,
+        "index.number_of_replicas": 1,
+        "index.routing.allocation.require.box_type": "hot"
+      },
+      "mappings": {
         "_default_": {
           "_all": {
             "enabled": false,
