@@ -1,9 +1,7 @@
 {
       "template": "apache_elk_example",
       "settings": {
-        "index.refresh_interval": "5s",
-        "index.number_of_shards": 2,
-        "index.number_of_replicas": 1
+        "index.refresh_interval": "5s"
       },
       "mappings": {
         "_default_": {
