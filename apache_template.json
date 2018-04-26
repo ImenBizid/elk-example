@@ -1,65 +1,48 @@
-{
-
-  "template": "apache_elk_example",
-  "settings": {
-     "index.refresh_interval": "5s"
-  },
-"mappings": {
-     "_default_": {
-        "dynamic_templates": [
-           {
-              "message_field": {
-                 "mapping": {
-                    "norms": false,
-                    "type": "text"
-                 },
-                 "match_mapping_type": "text",
-                 "match": "message"
-              }
-           },
-           {
-              "string_fields": {
-                 "mapping": {
-                    "norms": false,
-                    "type": "text",
-                    "fields": {
-                       "keyword": {
-                          "ignore_above": 256,
-                          "type": "keyword"
-                       }
-                    }
-                 },
-                 "match_mapping_type": "string",
-                 "match": "*"
-              }
-           }
-        ],
-        "properties": {
-           "geoip": {
-              "dynamic": true,
-              "properties": {
-                 "location": {
-                    "type": "geo_point"
-                 },
-                 "ip": {
-                   "type": "ip"
-                 },
-                 "continent_code": {
-                  "type": "keyword"
-                 },
-                 "country_name": {
-                   "type": "keyword"
-                 }
+"apache_elk_example" : {
+    "order" : 0,
+    "index_patterns" : [
+      "apache_elk_example"
+    ],
+    "settings" : {
+      "index" : {
+        "refresh_interval" : "5s"
+      }
+    },
+    "mappings" : {
+      "_default_" : {
+        "dynamic_templates" : [
+          {
+            "message_field" : {
+              "mapping" : {
+                "index" : "analyzed",
+                "omit_norms" : true,
+                "type" : "string"
               },
-              "type": "object"
-           },
-           "@version": {
-              "type": "keyword"
-           }
-        },
-        "_all": {
-           "enabled": true
+              "match_mapping_type" : "text",
+              "match" : "message"
+            }
+          },
+          {
+            "string_fields" : {
+              "mapping" : {
+                "type" : "text"
+              },
+              "match_mapping_type" : "string"
+            }
+          }
+        ],
+        "properties" : {
+          "geoip" : {
+            "dynamic" : true,
+            "properties" : {
+              "location" : {
+                "type" : "geo_point"
+              }
+            },
+            "type" : "object"
+          }
         }
-     }
+      }
+    },
+    "aliases" : { }
   }
-}
