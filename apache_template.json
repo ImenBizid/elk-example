@@ -16,7 +16,7 @@
                 "match_mapping_type": "string",
                 "mapping": {
                   "type": "text",
-                  "index": true,	
+                  "index": "analyzed",	
                   "omit_norms": true
                 }
               }
