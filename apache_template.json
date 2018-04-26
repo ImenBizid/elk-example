@@ -49,7 +49,7 @@
            },
            "@version": {
               "index": "not_analyzed",
-              "type": "text"
+              "type": "string"
            }
         },
         "_all": {
