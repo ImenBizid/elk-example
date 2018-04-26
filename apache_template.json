@@ -13,7 +13,7 @@
             {
               "message_field": {
                 "match": "message",
-                "match_mapping_type": "text",
+                "match_mapping_type": "keyword",
                 "mapping": {
                   "type": "text",
                   "index": "analyzed",	
@@ -27,12 +27,12 @@
                 "match_mapping_type": "text",
                 "mapping": {
                   "type": "text",
-                  "index": true,	
+                  "index": "analyzed",	
                   "omit_norms": true,
                   "fields": {
                     "keyword": {
                       "type": "text",
-                      "index": false,
+                      "index": "not analyzed",
                       "ignore_above": 256
                     }
                   }
