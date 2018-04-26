@@ -12,13 +12,22 @@
       "_default_" : {
         "dynamic_templates" : [
           {
+             "notanalyzed": {
+               "match_mapping_type": "string",
+               "mapping": {
+                   "type": "keyword"
+                },
+                "match": "*"
+              }
+          },
+          {
             "message_field" : {
               "mapping" : {
                 "index" : "analyzed",
                 "omit_norms" : true,
                 "type" : "string"
               },
-              "match_mapping_type" : "text",
+              "match_mapping_type" : "string",
               "match" : "message"
             }
           },
