@@ -49,7 +49,7 @@
            },
            "@version": {
               "analyzer": "not_analyzed",
-              "type": "string"
+              "type": "text"
            }
         },
         "_all": {
