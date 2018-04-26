@@ -26,9 +26,8 @@
                     "type": "string",
                     "fields": {
                        "raw": {
-                          "index": "not_analyzed",
                           "ignore_above": 256,
-                          "type": "string"
+                          "type": "keyword"
                        }
                     }
                  },
