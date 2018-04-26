@@ -8,48 +8,57 @@
         "refresh_interval" : "5s"
       }
     },
-    "mappings" : {
-      "_default_" : {
-        "dynamic_templates" : [
-          {
-             "notanalyzed": {
-               "match_mapping_type": "string",
-               "mapping": {
-                   "type": "keyword"
-                },
-                "match": "*"
-              }
+"mappings": {
+        "_default_": {
+          "_all": {
+            "enabled": false,
+            "omit_norms": true
           },
-          {
-            "message_field" : {
-              "mapping" : {
-                "omit_norms" : true,
-                "type" : "text"
-              },
-              "match_mapping_type" : "text"
-            }
-          },
-          {
-            "string_fields" : {
-              "mapping" : {
-                "type" : "text"
-              },
-              "match_mapping_type" : "text"
-            }
-          }
-        ],
-        "properties" : {
-          "geoip" : {
-            "dynamic" : true,
-            "properties" : {
-              "location" : {
-                "type" : "geo_point"
+          "dynamic_templates": [
+            {
+              "message_field": {
+                "match": "message",
+                "match_mapping_type": "string",
+                "mapping": {
+                  "type": "text",
+                  "index": "analyzed",
+                  "omit_norms": true
+                }
               }
             },
-            "type" : "object"
+            {
+              "strings": {
+                "match": "*",
+                "match_mapping_type": "string",
+                "mapping": {
+                  "type": "text",
+                  "index": "analyzed",
+                  "omit_norms": true,
+                  "fields": {
+                    "keyword": {
+                      "type": "text",
+                      "index": "not_analyzed",
+                      "ignore_above": 256
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "@version": {
+              "type": "text"
+            },
+            "geoip": {
+              "type": "object",
+              "dynamic": true,
+              "properties": {
+                "location": {
+                  "type": "geo_point"
+                }
+              }
+            }
           }
         }
       }
-    },
-    "aliases" : { }
-  }
+    }
