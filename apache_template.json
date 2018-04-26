@@ -13,7 +13,7 @@
                     "norms": false,
                     "type": "text"
                  },
-                 "match_mapping_type": "string",
+                 "match_mapping_type": "text",
                  "match": "message"
               }
            },
