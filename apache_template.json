@@ -3,54 +3,57 @@
       "settings": {
         "index.refresh_interval": "5s"
       },
-      "mappings": {	+"mappings" : {
-        "_default_": {	+    "_default_" : {
-          "_all": {	+      "_all" : {"enabled" : true, "norms" : false},
-            "enabled": false,	+      "dynamic_templates" : [ {
-            "omit_norms": true	+        "message_field" : {
-          },	+          "path_match" : "message",
-          "dynamic_templates": [	+          "match_mapping_type" : "string",
-            {	+          "mapping" : {
-              "message_field": {	+            "type" : "text",
-                "match": "message",	+            "norms" : false
-                "match_mapping_type": "string",	+          }
-                "mapping": {	+        }
-                  "type": "text",	+      }, {
-                  "index": "analyzed",		+        "string_fields" : {
-                  "omit_norms": true	+          "match" : "*",
-                }	+          "match_mapping_type" : "string",
-              }	+          "mapping" : {
-            },	+            "type" : "text", "norms" : false,
-            {	+            "fields" : {
-              "strings": {	+              "keyword" : { "type": "keyword", "ignore_above": 256 }
-                "match": "*",	
-                "match_mapping_type": "string",	
-                "mapping": {	
-                  "type": "text",	
-                  "index": "analyzed",		
-                  "omit_norms": true,	
-                  "fields": {	
-                    "keyword": {	
-                      "type": "text",	
-                      "index": "not analyzed",	
-                      "ignore_above": 256	
-                    }	
-                  }	
-                }	
-              }	
-            }	
-          ],	
-          "properties" : {
-       "@timestamp": { "type": "date", "include_in_all": false },
-        "@version": { "type": "keyword", "include_in_all": false },
-        "geoip"  : {
-          "dynamic": true,
-          "properties" : {
-            "ip": { "type": "ip" },
-            "location" : { "type" : "geo_point" },
-            "latitude" : { "type" : "half_float" },
-            "longitude" : { "type" : "half_float" }
-          }          
+      "mappings": {
+        "_default_": {
+          "_all": {
+            "enabled": false,
+            "omit_norms": true
+          },
+          "dynamic_templates": [
+            {
+              "message_field": {
+                "match": "message",
+                "match_mapping_type": "string",
+                "mapping": {
+                  "type": "text",
+                  "index": "analyzed",	
+                  "omit_norms": true
+                }
+              }
+            },
+            {
+              "strings": {
+                "match": "*",
+                "match_mapping_type": "string",
+                "mapping": {
+                  "type": "text",
+                  "index": "analyzed",	
+                  "omit_norms": true,
+                  "fields": {
+                    "keyword": {
+                      "type": "text",
+                      "index": "not analyzed",
+                      "ignore_above": 256
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "@version": {
+              "type": "keyword"
+            },
+            "geoip": {
+              "type": "object",
+              "dynamic": true,
+              "properties": {
+                "location": {
+                  "type": "geo_point"
+                }
+              }
+            }
+          }
+        }
       }
-  }
-}
+    }
