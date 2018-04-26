@@ -4,35 +4,33 @@
   "settings": {
      "index.refresh_interval": "5s"
   },
-  "mappings": {
+"mappings": {
      "_default_": {
         "dynamic_templates": [
            {
               "message_field": {
                  "mapping": {
-                    "index": "analyzed",
-                    "omit_norms": true,
-                    "type": "string"
-                 }
+                    "norms": false,
+                    "type": "text"
+                 },
+                 "match_mapping_type": "string",
+                 "match": "message"
               }
            },
            {
               "string_fields": {
                  "mapping": {
-                    "index": "analyzed",
-                    "omit_norms": true,
-                    "type": "string",
+                    "norms": false,
+                    "type": "text",
                     "fields": {
-                       "raw": {
+                       "keyword": {
                           "ignore_above": 256,
                           "type": "keyword"
                        }
                     }
                  },
                  "match_mapping_type": "string",
-                    "mapping": {
-                    "type": "text"
-                    }
+                 "match": "*"
               }
            }
         ],
@@ -42,10 +40,25 @@
               "properties": {
                  "location": {
                     "type": "geo_point"
+                 },
+                 "ip": {
+                   "type": "ip"
+                 },
+                 "continent_code": {
+                  "type": "keyword"
+                 },
+                 "country_name": {
+                   "type": "keyword"
                  }
               },
               "type": "object"
+           },
+           "@version": {
+              "type": "keyword"
            }
+        },
+        "_all": {
+           "enabled": true
         }
      }
   }
