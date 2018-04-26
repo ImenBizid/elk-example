@@ -12,9 +12,9 @@
                  "mapping": {
                     "index": "analyzed",
                     "omit_norms": true,
-                    "type": "text"
+                    "type": "string"
                  },
-                 "match_mapping_type": "text",
+                 "match_mapping_type": "string",
                  "match": "message"
               }
            },
@@ -23,16 +23,16 @@
                  "mapping": {
                     "index": "analyzed",
                     "omit_norms": true,
-                    "type": "text",
+                    "type": "string",
                     "fields": {
                        "raw": {
                           "index": "not_analyzed",
                           "ignore_above": 256,
-                          "type": "text"
+                          "type": "string"
                        }
                     }
                  },
-                 "match_mapping_type": "text",
+                 "match_mapping_type": "string",
                  "match": "*"
               }
            }
@@ -48,8 +48,8 @@
               "type": "object"
            },
            "@version": {
-              "analyzer": "ik_max_word",
-              "type": "text"
+              "analyzer": "not_analyzed",
+              "type": "string"
            }
         },
         "_all": {
