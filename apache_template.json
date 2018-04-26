@@ -42,7 +42,7 @@
           ],
           "properties": {
             "@version": {
-              "type": "text"
+              "type": "string"
             },
             "geoip": {
               "type": "object",
